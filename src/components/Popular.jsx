@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function Popular() {
+  const [popular, setPopular] = useState([]);
   useEffect(() => {
     getPopular();
   }, []);
@@ -14,10 +15,20 @@ function Popular() {
     console.log(data);
     //adding aaync here bc it's data that we n\eed
     //to wait for and we4 wanna make sure we have it before
-    //
+    setPopular(data.recipes);
   };
 
-  return <div> </div>;
+  return (
+    <div>
+      {popular.map((recipe) => {
+        return (
+          <div>
+            <p>{recipe.title}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export default Popular;
