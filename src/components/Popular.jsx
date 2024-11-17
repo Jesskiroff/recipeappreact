@@ -29,6 +29,7 @@ function Popular() {
                 return(
                     <Card> 
                         <p>{recipe.title}</p>
+                        <img src={recipe.image} alt={recipe.title}/>
                     </Card>
                 
                 );
