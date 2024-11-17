@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components'; 
+import {Splide, SplideSlide} from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
+
 
 function Popular() {
   const [popular, setPopular] = useState([]);
