@@ -48,6 +48,11 @@ margin: 4rem 0rem;
 const Card = styled.div`
     min-height: 25rem;
     border-radius: 2rem;
+    overflow: hidden;
+
+    img{
+    border-radius: 2rem;
+    }
     `;
 
 export default Popular;
