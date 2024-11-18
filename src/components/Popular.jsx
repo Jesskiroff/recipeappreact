@@ -11,14 +11,20 @@ function Popular() {
   // this is to run the function as soon as possible.The empty array essentially tells the comp to only run the func when the component gets mointed
 
   const getPopular = async () => {
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
-    );
-    const data = await api.json();
-    console.log(data);
-    //adding aaync here bc it's data that we n\eed
-    //to wait for and we4 wanna make sure we have it before
-    setPopular(data.recipes);
+    const check = localStorage.getItem('popular');
+    if (check) {
+      setPopular(JSON.parse(check));
+    } else {
+      const api = await fetch(
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+      );
+      const data = await api.json();
+      localStorage.setitem('popular', JSON.stringify(data.recipes));
+      //adding aaync here bc it's data that we n\eed
+      //to wait for and we4 wanna make sure we have it before
+      setPopular(data.recipes);
+      console.log(data.recipes);
+    }
   };
 
   return (
@@ -88,10 +94,10 @@ const Card = styled.div`
 `;
 
 const Gradient = styled.div`
-z-index: 3;
-position: absolute;
-width: 100%;
-height:100%;
-background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5))
+  z-index: 3;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 `;
 export default Popular;
