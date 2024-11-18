@@ -19,7 +19,7 @@ function Popular() {
         `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
       );
       const data = await api.json();
-      localStorage.setitem('popular', JSON.stringify(data.recipes));
+      localStorage.setItem('popular', JSON.stringify(data.recipes));
       //adding aaync here bc it's data that we n\eed
       //to wait for and we4 wanna make sure we have it before
       setPopular(data.recipes);
