@@ -1,28 +1,28 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 
 function Veggie() {
-  const [popular, setPopular] = useState([]);
+  const [veggie, setVeggie] = useState([]);
   useEffect(() => {
-    getPopular();
+    getVeggie();
   }, []);
   // this is to run the function as soon as possible.The empty array essentially tells the comp to only run the func when the component gets mointed
 
-  const getPopular = async () => {
-    const check = localStorage.getItem('popular');
+  const getVeggie = async () => {
+    const check = localStorage.getItem('veggie');
     if (check) {
-      setPopular(JSON.parse(check));
+      setVeggie(JSON.parse(check));
     } else {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&tags=vegetarian`
       );
       const data = await api.json();
-      localStorage.setItem('popular', JSON.stringify(data.recipes));
+      localStorage.setItem('veggie', JSON.stringify(data.recipes));
       //adding aaync here bc it's data that we n\eed
       //to wait for and we4 wanna make sure we have it before
-      setPopular(data.recipes);
+      setVeggie(data.recipes);
       console.log(data.recipes);
     }
   };
@@ -30,17 +30,17 @@ function Veggie() {
   return (
     <div>
       <Wrapper>
-        <h3>Veggies</h3>
+        <h3>Our Vegetarian Picks</h3>
         <Splide
           options={{
-            perPage: 4,
+            perPage: 3,
             arrows: false,
             pagination: false,
             drag: 'free',
             gap: '5rem',
           }}
         >
-          {popular.map((recipe) => {
+          {veggie.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>
