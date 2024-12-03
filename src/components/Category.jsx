@@ -1,5 +1,5 @@
-import { FaPizzaSlice, FaHamburger } from 'react-icons/fa';
-import { GiNoodles, GiChopsticks } from 'react-icons/gi';
+import { MdOutlineFoodBank } from 'react-icons/md';
+import { GiMeal, GiCakeSlice, GiFrenchFries } from 'react-icons/gi';
 import styled from 'styled-components';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
@@ -8,21 +8,25 @@ import { NavLink } from 'react-router-dom';
 function Category() {
   return (
     <List>
-      <NavLink to={'/cuisine/Italian'}>
-        <FaPizzaSlice />
-        <h4>Italian</h4>
-      </NavLink>
       <NavLink to={'/cuisine/American'}>
-        <FaHamburger />
+        <MdOutlineFoodBank />
         <h4>American</h4>
       </NavLink>
-      <NavLink to={'/cuisine/Thai'}>
-        <GiNoodles />
-        <h4>Thai</h4>
+      <NavLink to={'/cuisine/French'}>
+        <GiMeal />
+        <h4>French</h4>
       </NavLink>
-      <NavLink to={'/cuisine/Japanese'}>
-        <GiChopsticks />
-        <h4>Japanese</h4>
+      <NavLink to={'/cuisine/Jewish'}>
+        <GiFrenchFries />
+        <h4>Jewish</h4>
+      </NavLink>
+      <NavLink to={'/cuisine/LatinAmerican'}>
+        <GiFrenchFries />
+        <h4>Latin American</h4>
+      </NavLink>
+      <NavLink to={'/cuisine/MiddleEastern'}>
+        <GiCakeSlice />
+        <h4>Middle Eastern</h4>
       </NavLink>
     </List>
   );
