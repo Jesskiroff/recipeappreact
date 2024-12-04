@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
-
+import Category from '../components/Category';
 function Cuisine() {
   const [cuisine, setCuisine] = useState([]);
   let params = useParams();
@@ -20,7 +20,7 @@ function Cuisine() {
     console.log(params.type);
   }, [params.type]);
   return <Grid>
-    {Cuisine.map((item) => {
+    {cuisine.map((item) => {
     return(
         <Card key={item.id}>
             <img src={item.image} alt=""/>
