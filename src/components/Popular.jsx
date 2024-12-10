@@ -4,7 +4,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 
 function Popular() {
-  const [popular, setPopular] = useState([]);
+  const[popular, setPopular] = useState([]);
   useEffect(() => {
     getPopular();
   }, []);
