@@ -44,7 +44,9 @@ function Recipe() {
         >
           Ingredients
         </Button>
-        <div><h3>{details.summary}</h3></div>
+        <div>
+          <h3 dangerouslySetInnerHTML= {{ __html: details.summary}}></h3>
+          </div>
       </Info>
     </DetailWrapper>
   );
