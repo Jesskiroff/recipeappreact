@@ -7,6 +7,8 @@ import React from 'react';
 function Recipe() {
   let params = useParams();
   const [details, setDetails] = useState({});
+  const [activeTab, setActiveTab] = useState('instructions');
+  // instructions is going to the be the tab that is active by default
 
   const fetchDetails = async () => {
     const data = await fetch(
@@ -27,8 +29,22 @@ function Recipe() {
         <img src={details.image} alt="" />
       </div>
       <Info>
-        <Button>Instructions</Button>
-        <Button>Ingredients</Button>
+        <Button
+          className={activeTab === 'instructions' ? 'active' : ''}
+          onClick={() => setActiveTab('instructions')}
+        >
+          {/* instructions is the default active tab. 
+          when ingedients is clicked on, however, 
+          ingredients becomes the active tab*/}
+          Instructions
+        </Button>
+        <Button
+          className={activeTab === 'ingredients' ? 'active' : ''}
+          onClick={() => setActiveTab('ingredients')}
+        >
+          Ingredients
+        </Button>
+        <div><h3>{details.summary}</h3></div>
       </Info>
     </DetailWrapper>
   );
